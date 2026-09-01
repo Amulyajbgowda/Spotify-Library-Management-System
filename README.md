@@ -1,366 +1,524 @@
-\# Spotify Library Enhancer 🎵
+# Spotify Library Management System 🎵
 
+A Python-based music library management and analytics application that integrates with the Spotify Web API to analyze user playlists, classify songs based on mood, and generate intelligent playlists.
 
+The system retrieves music information from a user's Spotify library and processes track metadata and audio features using Machine Learning to provide mood-based song classification and interactive music analytics.
 
-A Python-based music library management and analytics application built using \*\*Streamlit, Spotify Web API, Machine Learning, and Data Visualization\*\*.
+---
 
+## 🖼️ Application Screenshots
 
+The project was developed as an interactive Streamlit application for Spotify library analysis and management.
 
-The application connects with a user's Spotify account, analyzes playlists and tracks, classifies songs based on mood and genre, and provides interactive insights through a dashboard.
+> Screenshots demonstrate the application interface and functionality during the development of the project.
 
+### Dashboard
 
+![Dashboard](screenshots/dashboard.png)
 
-\---
+### Music Analytics
 
+![Music Analytics](screenshots/analytics.png)
 
+### Playlist Analysis
 
-\## 🚀 Features
+![Playlist Analysis](screenshots/playlist-analysis.png)
 
+---
 
+## 🚀 Features
 
-\* Spotify OAuth authentication
+### 🎵 Spotify Library Management
 
-\* Access and analyze user playlists
+- Spotify OAuth authentication
+- Access and analyze user playlists
+- Retrieve playlist tracks
+- Extract track metadata
+- Support for private and public playlists
+- Automatic music library analysis
+- Smart playlist creation through Spotify Web API
 
-\* Extract track metadata including artist, album, release year, genre, and duration
+### 🎶 Track Information Analysis
 
-\* Automatic genre-based playlist organization
+The system extracts and analyzes:
 
-\* Mood classification using a Machine Learning model
+- Track name
+- Artist
+- Album
+- Release year
+- Genre
+- Track duration
+- Date added
 
-\* Mood categories including Happy, Sad, Angry, Chill, Energetic, Romantic, and Rap
+### 🧠 Mood-Based Song Classification
 
-\* Interactive music analytics dashboard
+The application uses a trained Machine Learning model to classify songs into different mood categories.
 
-\* Playlist and track analysis
+Supported moods include:
 
-\* Audio feature analysis
+- Happy
+- Sad
+- Angry
+- Chill
+- Energetic
+- Romantic
+- Rap
 
-\* User mood overrides with metadata persistence
+The classification process combines:
 
-\* Rating and filtering capabilities
+- Spotify audio features
+- Machine Learning predictions
+- Genre-based classification
+- Song name analysis
+- Artist-based mood overrides
+- User-defined mood overrides
 
-\* Data visualization using interactive charts
+### 📊 Music Analytics Dashboard
 
+The Streamlit dashboard provides interactive insights into the user's music library, including:
 
+- Mood distribution
+- Genre distribution
+- Playlist analysis
+- Track analysis
+- Audio feature analysis
+- Music library patterns
+- Interactive visualizations
 
-\---
+### 🤖 Smart Playlist Generation
 
+The system can automatically create playlists based on analyzed music data.
 
+Tracks can be organized according to:
 
-\## 🧠 Machine Learning
+- Mood
+- Genre
+- Music characteristics
+- Classification results
 
+---
 
-
-The project uses a trained machine learning model to classify songs into different mood categories based on Spotify audio features.
-
-
-
-\### Audio Features Used
-
-
-
-\* Danceability
-
-\* Energy
-
-\* Key
-
-\* Loudness
-
-\* Mode
-
-\* Speechiness
-
-\* Acousticness
-
-\* Instrumentalness
-
-\* Liveness
-
-\* Valence
-
-\* Tempo
-
-
-
-The trained model is stored as:
-
-
+## 🏗️ Project Architecture
 
 ```text
-
-mood\_model.pkl
-
-```
-
-
-
-The training process is available in:
-
-
-
-```text
-
-train\_mood\_model.py
-
-```
-
-
-
-\---
-
-
-
-\## 🛠️ Technologies Used
-
-
-
-\* Python
-
-\* Streamlit
-
-\* Spotipy
-
-\* Spotify Web API
-
-\* Scikit-learn
-
-\* Pandas
-
-\* Joblib
-
-\* Plotly
-
-
-
-\---
-
-
-
-\## 📂 Project Structure
-
-
-
-```text
-
-slm/
-
+Spotify-Library-Enhancer/
 │
-
-├── spotify\_en\_newmood.py      # Main Streamlit application
-
-├── spotify\_utils.py           # Spotify utility functions
-
-├── train\_mood\_model.py        # ML model training
-
-├── mood\_model.pkl             # Trained mood classification model
-
-├── spotify\_mood\_data.csv      # Dataset
-
-├── requirements.txt           # Project dependencies
-
-├── .env.example               # Environment variable template
-
+├── spotify_en_newmood.py
+│   └── Main Streamlit application
+│
+├── spotify_utils.py
+│   └── Spotify API utility functions
+│
+├── train_mood_model.py
+│   └── Machine Learning model training
+│
+├── mood_model.pkl
+│   └── Trained mood classification model
+│
+├── spotify_mood_data.csv
+│   └── Dataset used for model training
+│
+├── screenshots/
+│   ├── dashboard.png
+│   ├── analytics.png
+│   └── playlist-analysis.png
+│
+├── requirements.txt
+│   └── Project dependencies
+│
+├── .env.example
+│   └── Environment variable template
+│
+├── .gitignore
+│   └── Ignored files configuration
+│
 └── README.md
-
 ```
 
+---
 
+## 🧠 System Workflow
 
-\---
-
-
-
-\## ⚙️ Installation
-
-
-
-\### 1. Clone the repository
-
-
-
-```bash
-
-git clone <repository-url>
-
-cd slm
-
+```text
+                  ┌─────────────────────┐
+                  │   User Login        │
+                  │ Spotify OAuth       │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Spotify Web API     │
+                  │ Authentication      │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Retrieve Playlists  │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Extract Track Data  │
+                  │ Metadata + Genre    │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Audio Feature       │
+                  │ Analysis            │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Machine Learning    │
+                  │ Mood Classification │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Music Analytics     │
+                  │ Dashboard           │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Smart Playlist      │
+                  │ Generation          │
+                  └─────────────────────┘
 ```
 
+---
 
+## 💻 Technology Stack
 
-\### 2. Create a virtual environment
+### Application
 
+- Python
+- Streamlit
 
+### Spotify Integration
+
+- Spotify Web API
+- Spotipy
+- Spotify OAuth
+
+### Machine Learning
+
+- Scikit-learn
+- Joblib
+
+### Data Processing
+
+- Pandas
+
+### Data Visualization
+
+- Plotly
+- Streamlit Interactive Charts
+
+### Configuration
+
+- Python-dotenv
+
+---
+
+## ⚙️ Installation
+
+### Prerequisites
+
+Make sure you have installed:
+
+- Python 3.9+
+- pip
+- Git
+- Spotify Developer Account
+
+---
+
+## 🔧 Project Setup
+
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/Amulyajbgowda/Spotify-Library-Enhancer.git
+cd Spotify-Library-Enhancer
+```
 
+### 2. Create a virtual environment
+
+#### Windows
+
+```bash
 python -m venv venv
-
+venv\Scripts\activate
 ```
 
-
-
-\### 3. Activate the virtual environment
-
-
-
-\#### Windows
-
-
+#### Linux/macOS
 
 ```bash
-
-venv\\Scripts\\activate
-
+python3 -m venv venv
+source venv/bin/activate
 ```
 
-
-
-\### 4. Install dependencies
-
-
+### 3. Install dependencies
 
 ```bash
-
 pip install -r requirements.txt
-
 ```
 
+---
 
+## 🔑 Spotify API Configuration
 
-\### 5. Configure environment variables
+### 1. Create Spotify Developer Credentials
 
+Create a Spotify application and obtain:
 
+- Client ID
+- Client Secret
 
-Create a `.env` file based on `.env.example`:
+### 2. Configure Redirect URI
 
+Configure the following redirect URI:
 
+```text
+http://localhost:8501
+```
+
+### 3. Create Environment Variables
+
+Create a `.env` file based on `.env.example`.
+
+Example:
 
 ```env
-
-SPOTIFY\_CLIENT\_ID=your\_spotify\_client\_id
-
-SPOTIFY\_CLIENT\_SECRET=your\_spotify\_client\_secret
-
-SPOTIFY\_REDIRECT\_URI=http://localhost:8501
-
+SPOTIFY_CLIENT_ID=your_spotify_client_id
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+SPOTIFY_REDIRECT_URI=http://localhost:8501
 ```
 
+> Never commit your actual `.env` file or Spotify credentials to GitHub.
 
+---
 
-\### 6. Run the application
+## ▶️ Running the Application
 
-
+Start the Streamlit application:
 
 ```bash
-
-streamlit run spotify\_en\_newmood.py
-
+streamlit run spotify_en_newmood.py
 ```
 
+The application will typically run at:
 
+```text
+http://localhost:8501
+```
 
-\---
+---
 
+## 🧠 Machine Learning Model
 
+The project includes a trained Machine Learning model:
 
-\## 📊 Dataset
+```text
+mood_model.pkl
+```
 
+The model uses Spotify audio features to classify songs into different mood categories.
 
+The model is trained using the dataset:
 
-The project uses a music dataset containing Spotify track information and audio features for training the mood classification model.
+```text
+spotify_mood_data.csv
+```
 
+The training script is available in:
 
+```text
+train_mood_model.py
+```
 
-The dataset includes features such as:
+To retrain the model:
 
+```bash
+python train_mood_model.py
+```
 
+---
 
-\* Danceability
+## 📊 Dataset
 
-\* Energy
+The project includes a music dataset containing Spotify track information and audio features.
 
-\* Valence
+The dataset includes:
 
-\* Tempo
+- Danceability
+- Energy
+- Key
+- Loudness
+- Mode
+- Speechiness
+- Acousticness
+- Instrumentalness
+- Liveness
+- Valence
+- Tempo
 
-\* Loudness
+These features are used as input for the mood classification model.
 
-\* Acousticness
+---
 
-\* Speechiness
+## 🔌 Spotify API Integration
 
+The project uses the Spotify Web API through the Spotipy Python library.
 
+The application requests permissions for:
 
-\---
+- Reading user playlists
+- Reading private playlists
+- Creating private playlists
+- Creating public playlists
+- Reading the user's saved music library
 
+OAuth scopes:
 
+```text
+playlist-read-private
+playlist-modify-private
+playlist-modify-public
+user-library-read
+```
 
-\## ⚠️ Spotify API Access Note
+---
 
+## ⚠️ Current Spotify API Availability
 
+This project was originally developed and tested using the Spotify Web API during its development period.
 
-This project was originally developed using the Spotify Web API to access user playlists and music library data.
+The application relies on Spotify API access for core functionality such as:
 
+- User authentication
+- Playlist retrieval
+- Track metadata extraction
+- Genre analysis
+- Audio feature retrieval
+- Smart playlist creation
 
+Spotify's API access policies and account eligibility requirements may change over time. As a result, some API-dependent functionality may not currently be available for all developer accounts.
 
-Recent changes to Spotify's developer access policies may require an eligible Spotify Premium developer account for certain API-dependent functionality. Therefore, the Spotify integration may require additional account eligibility to run successfully.
+Users may encounter authorization or access errors when attempting to retrieve playlists or access certain Spotify resources depending on current Spotify API policies and account eligibility.
 
+The complete application source code, Machine Learning model, training dataset, dashboard implementation, and project architecture are included in this repository.
 
+Application screenshots are provided above to demonstrate the functionality and output of the system during the project's development.
 
-The core project implementation, machine learning model, dataset, and application source code are included in this repository.
+---
 
+## 🔒 Security and Environment Variables
 
+Sensitive credentials should never be committed to GitHub.
 
-\---
+The project includes:
 
+```text
+.env.example
+```
 
+Use it as a template.
 
-\## 🔮 Future Enhancements
+### Windows
 
+```bash
+copy .env.example .env
+```
 
+### Linux/macOS
 
-\* Replace the existing mood classification model with modern deep learning approaches
+```bash
+cp .env.example .env
+```
 
-\* Content-based music recommendation system
+The `.gitignore` excludes sensitive and generated files such as:
 
-\* Similar song detection
+```text
+.env
+.cache
+venv/
+.venv/
+__pycache__/
+*.pyc
+```
 
-\* Personalized music recommendations
+---
 
-\* Smart playlist generation
+## ⚡ Project Highlights
 
-\* Playlist quality analysis and optimization
+- Spotify Web API integration
+- OAuth authentication
+- User playlist analysis
+- Music metadata extraction
+- Genre analysis
+- Audio feature analysis
+- Machine Learning-based mood classification
+- Genre-based music organization
+- Smart playlist generation
+- Interactive Streamlit dashboard
+- Music analytics and visualization
+- Persistent user mood overrides
+- Automated playlist creation
 
-\* Music clustering based on audio features
+---
 
-\* Explainable music recommendations
+## 🔮 Future Improvements
 
-\* Support for additional music APIs
+Possible future enhancements include:
 
-\* Advanced user analytics
+- Replace the existing mood classification model with modern deep learning approaches
+- Content-based music recommendation system
+- Similar song detection
+- Personalized music recommendations
+- Music clustering based on audio features
+- Explainable AI-based music recommendations
+- Hybrid recommendation system
+- Advanced playlist quality analysis
+- Natural language music search
+- Sentiment-aware playlist generation
+- Support for additional music APIs
+- Advanced listening analytics
+- Improved dashboard visualizations
+- Real-time music recommendations
 
+---
 
+## 🛠️ Development
 
-\---
+### Run the Streamlit development server
 
+```bash
+streamlit run spotify_en_newmood.py
+```
 
+### Retrain the Machine Learning model
 
-\## 👤 Author
+```bash
+python train_mood_model.py
+```
 
+---
 
+## 📄 License
 
-\*\*Amulya\*\*
+This project is intended for educational and portfolio purposes.
 
+---
 
+## 👨‍💻 Author
 
-\---
+**Amulya**
 
+MCA Graduate | Software Developer | Python | Machine Learning | Data Analytics
 
+GitHub: Amulyajbgowda
 
-⭐ If you found this project interesting, consider giving it a star!
-
-
-
+⭐ If you found this project interesting, consider giving the repository a star!
