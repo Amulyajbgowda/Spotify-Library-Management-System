@@ -1,8 +1,8 @@
 # Spotify Library Management System 🎵
 
-A Python-based music library management and analytics application that integrates with the Spotify Web API to analyze user playlists, classify songs based on mood, and generate intelligent playlists.
+A Python-based music library management and analytics application built using **Streamlit, Spotify Web API, Machine Learning, and Data Visualization**.
 
-The system retrieves music information from a user's Spotify library and processes track metadata and audio features using Machine Learning to provide mood-based song classification and interactive music analytics.
+The system connects with a user's Spotify library to analyze playlists and tracks, extract music metadata and audio features, classify songs based on mood, generate intelligent playlists, and provide interactive music analytics through a dashboard.
 
 ---
 
@@ -10,19 +10,35 @@ The system retrieves music information from a user's Spotify library and process
 
 The project was developed as an interactive Streamlit application for Spotify library analysis and management.
 
-> Screenshots demonstrate the application interface and functionality during the development of the project.
+> The screenshots below demonstrate the main application workflow and functionality during the project's development.
 
-### Dashboard
+### Application Home
 
-![Dashboard](screenshots/dashboard.png)
+![Streamlit Home](screenshots/01-streamlit-home.jpeg)
 
-### Music Analytics
+### Dashboard & Statistics
 
-![Music Analytics](screenshots/analytics.png)
+![Dashboard Statistics](screenshots/04-dashboard-statistics.jpeg)
 
-### Playlist Analysis
+### Mood Insights
 
-![Playlist Analysis](screenshots/playlist-analysis.png)
+![Mood Insights](screenshots/05-mood-insights.jpeg)
+
+### Listening Trends & Comparison
+
+![Listening Trends](screenshots/06-listening-trends-comparison.jpeg)
+
+### Library Management
+
+![Library Management](screenshots/09-library-management.jpeg)
+
+### Smart Playlists
+
+![Smart Playlists](screenshots/12-smart-playlists.jpeg)
+
+### Spotify Output
+
+![Spotify Output](screenshots/14-spotify-output.jpeg)
 
 ---
 
@@ -35,8 +51,9 @@ The project was developed as an interactive Streamlit application for Spotify li
 - Retrieve playlist tracks
 - Extract track metadata
 - Support for private and public playlists
-- Automatic music library analysis
-- Smart playlist creation through Spotify Web API
+- Load and analyze the user's music library
+- Create playlists through Spotify Web API
+- Automated mood-based playlist generation
 
 ### 🎶 Track Information Analysis
 
@@ -77,17 +94,42 @@ The classification process combines:
 
 The Streamlit dashboard provides interactive insights into the user's music library, including:
 
+- Dashboard statistics
 - Mood distribution
 - Genre distribution
 - Playlist analysis
-- Track analysis
-- Audio feature analysis
-- Music library patterns
+- Listening trends
+- Artist comparison
+- Activity heatmap
+- Advanced insights
 - Interactive visualizations
+
+### 📚 Library Management
+
+The application provides music library management features such as:
+
+- Create playlists
+- Organize music based on mood
+- Generate mood-based playlists
+- Analyze existing playlists
+- Manage classified tracks
+
+### 🔍 Advanced Search
+
+Users can search and filter tracks based on music information and metadata.
+
+Search capabilities include filtering by:
+
+- Track name
+- Artist
+- Album
+- Genre
+- Mood
+- Other track attributes
 
 ### 🤖 Smart Playlist Generation
 
-The system can automatically create playlists based on analyzed music data.
+The system supports intelligent playlist creation using track properties and user-defined conditions.
 
 Tracks can be organized according to:
 
@@ -95,13 +137,40 @@ Tracks can be organized according to:
 - Genre
 - Music characteristics
 - Classification results
+- Track ratings
+- Custom rules
+
+### ⭐ Track Rating and Mood Management
+
+Users can:
+
+- Rate individual tracks
+- Assign mood preferences
+- Override predicted moods
+- Save track preferences
 
 ---
 
 ## 🏗️ Project Architecture
 
 ```text
-Spotify-Library-Enhancer/
+Spotify-Library-Management-System/
+│
+├── screenshots/
+│   ├── 01-streamlit-home.jpeg
+│   ├── 02-spotify-oauth-login.jpeg
+│   ├── 03-navigation-load-library.jpeg
+│   ├── 04-dashboard-statistics.jpeg
+│   ├── 05-mood-insights.jpeg
+│   ├── 06-listening-trends-comparison.jpeg
+│   ├── 07-activity-heatmap.jpeg
+│   ├── 08-advanced-insights.jpeg
+│   ├── 09-library-management.jpeg
+│   ├── 10-mood-playlist-generation.jpeg
+│   ├── 11-advanced-search.jpeg
+│   ├── 12-smart-playlists.jpeg
+│   ├── 13-rate-tracks.jpeg
+│   └── 14-spotify-output.jpeg
 │
 ├── spotify_en_newmood.py
 │   └── Main Streamlit application
@@ -117,11 +186,6 @@ Spotify-Library-Enhancer/
 │
 ├── spotify_mood_data.csv
 │   └── Dataset used for model training
-│
-├── screenshots/
-│   ├── dashboard.png
-│   ├── analytics.png
-│   └── playlist-analysis.png
 │
 ├── requirements.txt
 │   └── Project dependencies
@@ -141,25 +205,26 @@ Spotify-Library-Enhancer/
 
 ```text
                   ┌─────────────────────┐
-                  │   User Login        │
-                  │ Spotify OAuth       │
+                  │  Streamlit App      │
+                  │  Launch             │
                   └──────────┬──────────┘
                              │
                              ▼
                   ┌─────────────────────┐
-                  │ Spotify Web API     │
+                  │ Spotify OAuth       │
                   │ Authentication      │
                   └──────────┬──────────┘
                              │
                              ▼
                   ┌─────────────────────┐
-                  │ Retrieve Playlists  │
+                  │ Load Playlist       │
+                  │ Tracks              │
                   └──────────┬──────────┘
                              │
                              ▼
                   ┌─────────────────────┐
-                  │ Extract Track Data  │
-                  │ Metadata + Genre    │
+                  │ Extract Metadata    │
+                  │ and Music Data      │
                   └──────────┬──────────┘
                              │
                              ▼
@@ -176,8 +241,14 @@ Spotify-Library-Enhancer/
                              │
                              ▼
                   ┌─────────────────────┐
-                  │ Music Analytics     │
-                  │ Dashboard           │
+                  │ Dashboard Analytics │
+                  │ and Insights        │
+                  └──────────┬──────────┘
+                             │
+                             ▼
+                  ┌─────────────────────┐
+                  │ Library Management  │
+                  │ and Search          │
                   └──────────┬──────────┘
                              │
                              ▼
@@ -240,8 +311,8 @@ Make sure you have installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Amulyajbgowda/Spotify-Library-Enhancer.git
-cd Spotify-Library-Enhancer
+git clone https://github.com/Amulyajbgowda/Spotify-Library-Management-System.git
+cd Spotify-Library-Management-System
 ```
 
 ### 2. Create a virtual environment
@@ -396,7 +467,7 @@ user-library-read
 
 This project was originally developed and tested using the Spotify Web API during its development period.
 
-The application relies on Spotify API access for core functionality such as:
+The application relies on Spotify API access for functionality such as:
 
 - User authentication
 - Playlist retrieval
@@ -405,13 +476,11 @@ The application relies on Spotify API access for core functionality such as:
 - Audio feature retrieval
 - Smart playlist creation
 
-Spotify's API access policies and account eligibility requirements may change over time. As a result, some API-dependent functionality may not currently be available for all developer accounts.
+Spotify's developer access policies and account eligibility requirements may change over time. As a result, some API-dependent functionality may not currently be available for all developer accounts.
 
 Users may encounter authorization or access errors when attempting to retrieve playlists or access certain Spotify resources depending on current Spotify API policies and account eligibility.
 
-The complete application source code, Machine Learning model, training dataset, dashboard implementation, and project architecture are included in this repository.
-
-Application screenshots are provided above to demonstrate the functionality and output of the system during the project's development.
+The complete application source code, Machine Learning model, training dataset, dashboard implementation, and screenshots demonstrating the original project functionality are included in this repository.
 
 ---
 
@@ -461,11 +530,15 @@ __pycache__/
 - Genre analysis
 - Audio feature analysis
 - Machine Learning-based mood classification
-- Genre-based music organization
-- Smart playlist generation
+- Mood-based music organization
 - Interactive Streamlit dashboard
-- Music analytics and visualization
-- Persistent user mood overrides
+- Listening trend analysis
+- Activity heatmap visualization
+- Advanced music insights
+- Library management
+- Advanced search
+- Smart playlist generation
+- Track rating and mood overrides
 - Automated playlist creation
 
 ---
@@ -515,7 +588,7 @@ This project is intended for educational and portfolio purposes.
 
 ## 👨‍💻 Author
 
-**Amulya**
+**Amulya Gowda**
 
 MCA Graduate | Software Developer | Python | Machine Learning | Data Analytics
 
