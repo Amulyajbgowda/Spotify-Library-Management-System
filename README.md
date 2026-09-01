@@ -588,7 +588,7 @@ This project is intended for educational and portfolio purposes.
 
 ## 👨‍💻 Author
 
-**Amulya Gowda**
+**Amulya**
 
 MCA Graduate | Software Developer | Python | Machine Learning | Data Analytics
 
